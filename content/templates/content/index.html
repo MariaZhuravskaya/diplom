@@ -1,0 +1,36 @@
+{% extends 'content/base.html' %}
+{% block content %}
+
+
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-6"><br><img src="/static/images/ii.png" class="img-fluid" alt="ii"></div>
+        <div class="col-6"><br>
+            <div class="container">
+                <div class="row">
+
+                    {% for object in publication %}
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <h3 class="mb-0">{{ object.name }}</h3>
+                                    <div class="mb-1 text-muted">{{ object.date_creation }}</div>
+                                    <a href="{% url 'content:publication_detail' object.pk %}" class="stretched-link">Продолжить
+                                        чтение</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+

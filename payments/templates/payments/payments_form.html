@@ -1,0 +1,16 @@
+{% extends 'content/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<<form action="{% url 'payment' %}" method="POST">
+{% csrf_token %}
+<label for="card_number">Номер карты:</label>
+<input type="text" id="card_number" name="card_number" required>
+<label for="expiration_date">Срок действия:</label>
+<input type="text" id="expiration_date" name="expiration_date" required>
+<label for="cvc">CVC:</label>
+<input type="text" id="cvc" name="cvc" required>
+<button type="submit">Оплатить</button>
+</form>
+{% endblock %}

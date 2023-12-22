@@ -1,0 +1,23 @@
+{% extends 'content/base.html' %}
+{% block content %}
+
+<div class="col-12 m-3">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <div>
+                            {% csrf_token %}
+                            <p>Удалить статью из блога {{ object.name }}?</p>
+                            <button type="submit" class="btn btn-success">Удалить</button>
+                            <a href="{% url 'content:publication_list' %}" type="button"
+                               class="btn btn-warning">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

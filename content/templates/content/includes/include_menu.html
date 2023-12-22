@@ -1,0 +1,59 @@
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                <a class="nav-link" href="{% url 'subscription:subscription_list' %}">Подписки</a>
+                <a class="nav-link" href="/publication">Публикации</a>
+                <a class="nav-link" href="{% url 'contacts:contact_list' %}">Контакты</a>
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
+                <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'users:login' %}">Войти</a>
+                <a class="nav-link" href="{% url 'users:register' %}">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+
+                <form class="d-flex">
+                    <a href="{% url 'users:register' %}" type="button" class="btn btn-secondary">Корзина
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-cart2"
+                             viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                        </svg>
+                    </a>
+                </form>
+            </div>
+        </nav>
+
+    </div>
+</nav>
+<p></p>
+
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-12-md-4">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                    <button class="btn btn-outline-success" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+

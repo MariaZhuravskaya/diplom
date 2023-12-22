@@ -1,0 +1,23 @@
+{% extends 'content/base.html' %}
+{% block content %}
+
+<p></p>
+<div class="container">
+    <div class="row">
+        {% for object in object_list %}
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">{{ object.publication.name }}</h3><p></p>
+                        <div class="mb-1 text-muted">{{ object.publication.price }} руб.</div>
+                        <p class="card-text mb-auto">{{ object.publication.description | truncatechars:100 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

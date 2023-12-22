@@ -1,0 +1,49 @@
+{% extends 'content/base.html' %}
+{% block content %}
+
+
+<div class="card-body">
+    <a class="btn btn-outline-primary m-3" href="{% url 'content:publication_form' %}">Добавить публикацию</a>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        {% for object in object_list %}
+        <div class="col-sm-4 d-grid gap-3 blank p-2">
+            <div class="card">
+                <img src="/media/{{ object.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.name }}</h5>
+                    <p class="card-text">{{ object.description | truncatechars:100 }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ object.date_creation }}</li>
+                </ul>
+                {% if object.author != None %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ object.author }}</li>
+                </ul>
+                {% endif %}
+                {% if object.price > 0 %}
+                <div class="d-grid gap-2">
+                    <a href="{% url 'payments:create-checkout-session' object.pk %}" class="btn btn-success" type="button">Подписаться
+                        за {{ object.price }} руб.</a>
+                </div>
+                {% else %}
+
+                <div class="card-body">
+                    <a href="{% url 'content:publication_detail' object.pk %}" class="card-link">Продолжить чтение</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        <p></p>
+
+    </div>
+</div>
+{% endblock %}
+
+
+

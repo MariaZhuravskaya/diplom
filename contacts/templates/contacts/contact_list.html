@@ -1,0 +1,70 @@
+{% extends 'content/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Контакты</h1>
+</div>
+
+<div class="container">
+    <div class="row text-start">
+        <div class="col-lg-9 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr>
+
+                            <strong>Наши администраторы с удовольствием ответят на ваши вопросы в мессенджере
+                                WhatsApp.
+                            </strong>
+                            <br><br>Если у вас замечния, предложения или интресные статьи оставьте свои данные в форме и
+                            мы свяжемся с Вами!
+                            <br><br>Телефон для ваших сообщений:
+                            <br>
+                            <span style="line-height: 32px;">
+                            <strong>+7 (800) 222-22-22</strong>
+                            </span>
+                            <br>Время работы администратора: Пн-Вс с 10:00 до 20:00.
+                            <br>Время работы редактора: Пн-Пт с 9:00 до 21:00
+                            <br>Почта для приёма вопросов:
+                            <br><strong>info@Artificial-Intelligence-Journals.ru</strong>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Свяжитесь с нами</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="" class="form-floating">
+
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <div class="mb-3">
+                            <label for="name">Имя</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя"
+                                   required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone">Телефон</label>
+                            <input type="text" name="phone" class="form-control" id="phone"
+                                   placeholder="Контактный телефон" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message">Сообщение</label>
+                            <textarea type="text" name="message" class="form-control" id="message"
+                                      placeholder="Сообщение" required></textarea>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-lg btn-block btn btn-outline-success">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
