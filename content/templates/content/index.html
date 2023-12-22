@@ -1,7 +1,6 @@
 {% extends 'content/base.html' %}
 {% block content %}
 
-
 <p></p>
 <div class="container">
     <div class="row">
@@ -9,7 +8,6 @@
         <div class="col-6"><br>
             <div class="container">
                 <div class="row">
-
                     {% for object in publication %}
                     <div class="row mb-2">
                         <div class="col-md-12">
@@ -17,18 +15,16 @@
                                 <div class="col p-4 d-flex flex-column position-static">
                                     <h3 class="mb-0">{{ object.name }}</h3>
                                     <div class="mb-1 text-muted">{{ object.date_creation }}</div>
-                                    <a href="{% url 'content:publication_detail' object.pk %}" class="stretched-link">Продолжить
-                                        чтение</a>
+                                    <a href="{% url 'content:publication_detail' object.pk %}"
+                                       class="stretched-link">Продолжить чтение</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

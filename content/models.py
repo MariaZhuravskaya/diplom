@@ -1,11 +1,13 @@
 from django.db import models
-
 from config import settings
 
 NULLABLE = {'blank': True, 'null': True}
 
 
 class Publication(models.Model):
+    """
+    Модель публикации
+    """
     name = models.CharField(max_length=250, verbose_name='наименование статьи')
     description = models.TextField(verbose_name='описание', **NULLABLE)
     image = models.ImageField(upload_to='content/', **NULLABLE, verbose_name='изображение')
@@ -19,7 +21,7 @@ class Publication(models.Model):
                                      verbose_name='автор статьи')
 
     def __str__(self):
-        return f'{self.name} - {self.price} руб.'
+        return f"{self.name}, {self.price}"
 
     class Meta:
         verbose_name = 'Публикация'

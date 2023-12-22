@@ -9,18 +9,21 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os
+from dotenv import load_dotenv
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env_path = BASE_DIR / '.env'
+load_dotenv(dotenv_path=env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$@*b_(rjm%*s2co04*#k94bmb_l1f53i6_a_fl%0t3)3&f1nv8'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,14 +89,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'content',
-        'USER': 'postgres',
-        'PASSWORD': 'maria',
-        'HOST': '127.0.0.1',
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
         'PORT': 5432
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -147,5 +149,5 @@ LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
-API_KEY_STRIPE_SECRET = 'sk_test_51OARKLKwGyIdGx42RzISiKP4tOWagFLbZsfNMUoVeY0ktA5B3K0xw6W1B7oHM22xlUBD3u1sfnO2VDL5FvynTded00CWr6ZCgv'
-API_KEY_STRIPE_PUBLISHABLE = 'pk_test_51OARKLKwGyIdGx42GxCvaTehY4vCuOqTJPfU94i6U36wxYbhZdeWd7IghCiL1fti0fYpgkvktTlSj0v9CbPQkjiw00ITM10jcW'
+API_KEY_STRIPE_SECRET = os.getenv('API_KEY_STRIPE_SECRET')
+API_KEY_STRIPE_PUBLISHABLE = os.getenv('API_KEY_STRIPE_PUBLISHABLE')
