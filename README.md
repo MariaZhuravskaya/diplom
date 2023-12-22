@@ -1,28 +1,18 @@
-#   Курсовой проект по DRF
+#   Дипломный проект по теме ОВ2 - Платформа для публикации платного контента
 
-# Сервис полезных привычек
+# Для запуска проетка
 
 1. Установить виртуальное окружение
 ```bash
-python3 -m venv venv
+python3 -m venv env
 ```
 2. Активировать виртуальное окружение
 ```bash
-source venv/bin/activate
+source venv\bin\activate.bat
 ```
 3. Установить зависимости проекта, указанные в файле `requirements.txt`
 ```bash
 pip install -r requirements.txt
-```
-4. Установить Redis. Запустить Redis.
-```bash
-https://learn.microsoft.com/en-us/windows/wsl/install
-```
-Redis сервер будет слушать на стандартном порту 6379.
-
-5. Убедиться, что Redis работает правильно, выполнив команду
-```bash
-redis-cli ping
 ```
 6. Установить PostreSQL
 ```bash
@@ -35,7 +25,7 @@ psql -U postgres
 8. Cоздать базу данных 
 с помощью следующей команды:
 ```bash
-CREATE DATABASE atomic_habit;
+CREATE DATABASE content;
 ```
 9. Выйти
 ```bash
@@ -52,7 +42,7 @@ python manage.py makemigrations
 ```bash
 python manage.py migrate
 ```
-13. Загрузить данные с помощью фикстур
+13. Загрузить данные
 ```bash
 python manage.py loaddata data.json
 ```
@@ -60,20 +50,14 @@ python manage.py loaddata data.json
 ```bash
 python manage.py runserver
 ```
-15. Запустить Celery
-```bash
-celery -A config worker -l INFO -P eventlet
-```
-```bash
-celery -A config beat -l info -S django
-```
+
+# Применяемый стэк
+- python
+- postgresql
+- django
+- docker
 
 
-Контекст
-
-В 2018 году Джеймс Клир написал книгу «Атомные привычки», которая посвящена приобретению новых полезных привычек и 
-искоренению старых плохих привычек. Заказчик прочитал книгу, впечатлился и обратился к вам с запросом реализовать 
-трекер полезных привычек.
 
 **В рамках учебного курсового проекта реализована бэкенд-часть SPA веб-приложения.**
 
