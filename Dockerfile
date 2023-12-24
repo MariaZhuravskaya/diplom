@@ -18,3 +18,11 @@ RUN pip install -r /code/requirements.txt
 
 # копируем содержимое текущей папки в контейнер
 COPY . .
+
+EXPOSE 8000
+
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
+ENTRYPOINT ["python", "manage.py"]
+CMD ["runserver", "0.0.0.0:8000"]

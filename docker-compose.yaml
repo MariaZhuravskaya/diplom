@@ -10,11 +10,10 @@ services:
     env_file:
       - .env_docker
     # Запускаем тестовый сервер
-    command: >
-      bash -c "python manage.py makemigrations
-      && python manage.py migrate
-      && python manage.py collectstatic --noinput
-      && python manage.py runserver"
+    #command: >
+    #  bash -c "python manage.py makemigrations
+    #  && python manage.py migrate
+    #  && python manage.py runserver"
     # Указываем куда будут помещены данные из корня проекта.
     # Монтирует текущую директорию на контейнер, позволяя вносить изменения
     # в код приложения без пересборки образа.
