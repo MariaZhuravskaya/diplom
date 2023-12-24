@@ -15,7 +15,7 @@ stripe.api_key = settings.API_KEY_STRIPE_SECRET
 
 class PaymentsListView(ListView):
     """
-    Модель списка платежей
+    Представление списка платежей
     """
     model = Payments
 
@@ -29,7 +29,9 @@ class PaymentsListView(ListView):
 
 
 class CreateCheckoutSessionView(View):
-
+    """
+    Представление создания платежа
+    """
     def get(self, request, *args, **kwargs):
         if self.request.user.is_anonymous:
             return HttpResponseRedirect(reverse_lazy('users:register'))
@@ -63,6 +65,9 @@ class CreateCheckoutSessionView(View):
 
 
 class SuccessView(TemplateView):
+    """
+    Представление страницы оплаты
+    """
     template_name = "payments/success.html"
 
     def get(self, request, *args, **kwargs):
@@ -87,4 +92,7 @@ class SuccessView(TemplateView):
 
 
 class CancelView(TemplateView):
+    """
+    Представление страницы при отмене платежа
+    """
     template_name = "cancel.html"

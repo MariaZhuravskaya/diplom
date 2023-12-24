@@ -1,6 +1,5 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-
 from subscription.forms import SubscriptionForm
 from subscription.models import Subscription
 
@@ -26,7 +25,7 @@ class SubscriptionCreateView(CreateView):
     """
     model = Subscription
     form_class = SubscriptionForm
-    success_url = reverse_lazy('payments:payments_form')        # перебросить на страницу оплаты
+    success_url = reverse_lazy('payments:payments_form')
 
     def form_valid(self, form):
         self.object = form.save()

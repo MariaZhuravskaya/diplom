@@ -48,7 +48,9 @@ class PublicationListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        """ get_context_data let you fill the template context """
+        """
+        Метод определяеи имеет ли пользователь подписку на публикацию
+        """
         context = super().get_context_data(**kwargs)
         if not self.request.user.is_anonymous:
             user_subscriptions = Subscription.objects.filter(
