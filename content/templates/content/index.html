@@ -15,8 +15,14 @@
                                 <div class="col p-4 d-flex flex-column position-static">
                                     <h3 class="mb-0">{{ object.name }}</h3>
                                     <div class="mb-1 text-muted">{{ object.date_creation }}</div>
-                                    <a href="{% url 'content:publication_detail' object.pk %}"
-                                       class="stretched-link">Продолжить чтение</a>
+                                    {% if object.price > 0 and object.author != user and Subscription.user == user %}
+                                        <div class="d-grid gap-2">
+                                            <a href="{% url 'payments:create-checkout-session' object.pk %}" class="btn btn-success" type="button">Подписаться за {{ object.price }} руб.</a>
+                                        </div>
+                                    {% else %}
+                                        <a href="{% url 'content:publication_detail' object.pk %}"
+                                           class="stretched-link">Продолжить чтение</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

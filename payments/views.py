@@ -1,5 +1,7 @@
 from datetime import datetime
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, TemplateView
 from config import settings
@@ -29,6 +31,8 @@ class PaymentsListView(ListView):
 class CreateCheckoutSessionView(View):
 
     def get(self, request, *args, **kwargs):
+        if self.request.user.is_anonymous:
+            return HttpResponseRedirect(reverse_lazy('users:register'))
         publication = Publication.objects.get(id=self.kwargs["pk"])
         domain = "https://yourdomain.com"
         if settings.DEBUG:

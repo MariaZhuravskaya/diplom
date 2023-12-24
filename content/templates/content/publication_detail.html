@@ -6,10 +6,12 @@
         <div class="btn-group">
             <a href="{% url 'content:publication_list' %}"
                class="btn btn-sm btn-outline-secondary">Назад</a>
+            {% if object.author == request.user or request.user.is_staff %}
             <a href="{% url 'content:publication_update' object.pk %}" type="button"
                class="btn btn-sm btn-outline-secondary">Редактировать</a>
             <a href="{% url 'content:publication_delete' object.pk %}" type="button"
                class="btn btn-sm btn-outline-secondary">Удалить</a>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -25,8 +27,8 @@
                 <img src="/media/{{ object.image }}" class="d-block mx-lg-auto img-fluid"
                      alt="Bootstrap Themes" width="700" height="500" loading="lazy">
                 <p class="card-text">
-                <p class="lead">{{ object.description }}</p>
-                <p>{{ object.date_creation }}</p>
+                    <p class="lead">{{ object.description }}</p>
+                    <p>{{ object.date_creation }}</p>
                 </p>
             </div>
             <div class="card-footer">
@@ -36,5 +38,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -18,13 +18,4 @@ class UserProfileForm(UserChangeForm):
         super().__init__(*args, **kwargs)
         self.fields['password'].widget = forms.HiddenInput()
 
-#
-# class PasswordResetRequestForm(forms.Form):
-#     email = forms.EmailField()
-#
-#     def clean_email(self):
-#         email = self.cleaned_data.get('email')
-#         user = User.objects.filter(email=email).first()
-#         if not user:
-#             raise forms.ValidationError('Пользователь с таким email адресом не найден.')
-#         return email
+

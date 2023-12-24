@@ -1,9 +1,10 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from content.forms import PublicationForm
 from content.models import Publication
+from subscription.models import Subscription
 
 
 def index(request):
@@ -46,6 +47,19 @@ class PublicationListView(ListView):
         queryset = queryset.filter(is_publication=True)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        """ get_context_data let you fill the template context """
+        context = super().get_context_data(**kwargs)
+        if not self.request.user.is_anonymous:
+            user_subscriptions = Subscription.objects.filter(
+                is_active=True,
+                user=self.request.user
+            )
+            context['subscriptions'] = {us.publication.id: us for us in user_subscriptions}
+        else:
+            context['subscriptions'] = {}
+        return context
+
 
 class PublicationUpdateView(UpdateView):
     """
@@ -70,6 +84,25 @@ class PublicationDetailView(DetailView):
     Представление для просмотра публикации
     """
     model = Publication
+
+    def get(self, request, *args, **kwargs):
+        self.object = super().get_object(None)
+
+        if self.object.price > 0 and self.request.user.is_anonymous:
+            return HttpResponseRedirect(reverse_lazy('users:register'))
+
+        if not self.request.user.is_anonymous:
+            user_subscriptions = Subscription.objects.filter(
+                is_active=True,
+                user=self.request.user
+            )
+            subscriptions = {us.publication.id: us for us in user_subscriptions}
+            if (self.object.author != self.request.user
+                    and not self.request.user.is_staff
+                    and self.object.id not in subscriptions
+                    and self.object.price > 0):
+                return HttpResponseRedirect(reverse_lazy('payments:create-checkout-session', kwargs={'pk': self.object.id}))
+        return super().get(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         """

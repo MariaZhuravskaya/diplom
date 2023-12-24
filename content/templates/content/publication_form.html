@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div>
                             {% csrf_token %}
                             {% crispy form %}
