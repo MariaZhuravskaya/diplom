@@ -1,63 +1,16 @@
 #   Дипломный проект по теме ОВ2 - Платформа для публикации платного контента
 
-# Для запуска проетка через docker необходимо выполнить ниже указанную команду и заполнить файл .env_sample
+### Для запуска проетка через docker необходимо выполнить ниже указанную команду и заполнить файл .env_sample
 
 ### `docker-compose up -d --build`
 
 или
 
-### docker-compose build
+1. ### `docker-compose build`
 
-### docker-compose up
+2. ### `docker-compose up`
 
-1. Установить виртуальное окружение
-```bash
-python3 -m venv env
-```
-2. Активировать виртуальное окружение
-```bash
-source venv\bin\activate.bat
-```
-3. Установить зависимости проекта, указанные в файле `requirements.txt`
-```bash
-pip install -r requirements.txt
-```
-6. Установить PostreSQL
-```bash
-pip install postgresql
-```
-7. Выполнить вход
-```bash
-psql -U postgres
-```
-8. Cоздать базу данных 
-с помощью следующей команды:
-```bash
-CREATE DATABASE content;
-```
-9. Выйти
-```bash
-\q
-```
-10. Создать файл `.env` 
-11. Записать в файл настройки, как в .env_sample
 
-12. Создать и применить миграции
-
-```bash
-python manage.py makemigrations
-```
-```bash
-python manage.py migrate
-```
-13. Загрузить данные
-```bash
-python manage.py loaddata data.json
-```
-14. Запустить сервер
-```bash
-python manage.py runserver
-```
 
 # Применяемый стэк
 - python
