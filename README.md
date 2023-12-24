@@ -147,3 +147,15 @@ python manage.py runserver
 * Удаление публикации
 * Создание платежей
 * Создание подписок
+
+
+```Для запуска тестов и расчета покрытия исполуем следующие команды
+
+python manage.py test --pattern="test_*.py" 
+
+coverage run --source='.' manage.py test --pattern="test_*.py"
+
+coverage report
+
+```
+

@@ -8,7 +8,7 @@ services:
     # Даёт возможность использовать команды терминала
     tty: true
     env_file:
-      - .env
+      - .env_docker
     # Запускаем тестовый сервер
     command: >
       bash -c "python manage.py makemigrations
@@ -35,7 +35,7 @@ services:
     image: postgres:12.0-alpine
     # Файл содержащий переменные для контейнера
     env_file:
-      - .env
+      - .env_docker
     # Внешний том(volume) и место где он будет подключен внутри контейнера
     volumes:
       - postgres_volume:/var/lib/postgresql/data/
