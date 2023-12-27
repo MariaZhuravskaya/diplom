@@ -121,4 +121,6 @@ coverage run --source='.' manage.py test --pattern="test_*.py"
 coverage report
 
 ```
+**Проверка кода на соответсвие стандартам PEP8:**
+`flake8 . --exclude=.venv,.env,env,venv,pyproject.tml,poetry.lock,migrations --max-line-length 120`
 
