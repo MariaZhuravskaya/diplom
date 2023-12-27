@@ -18,7 +18,7 @@ class Publication(models.Model):
     number_views = models.IntegerField(default=0, verbose_name='количество просмотров')
     is_publication = models.BooleanField(default=True, verbose_name='опубликовано')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
-                                     verbose_name='автор статьи')
+                               verbose_name='автор статьи')
 
     def __str__(self):
         return f"{self.name}, {self.price}"

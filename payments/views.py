@@ -82,9 +82,9 @@ class SuccessView(TemplateView):
         payment.save()
 
         subscription = Subscription(publication=publication,
-                     user=self.request.user,
-                     payments=payment,
-                     is_active=True)
+                                    user=self.request.user,
+                                    payments=payment,
+                                    is_active=True)
 
         subscription.save()
 

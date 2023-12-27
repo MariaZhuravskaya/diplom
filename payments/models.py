@@ -11,7 +11,3 @@ class Payments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь')
     date = models.DateField(auto_now_add=True, verbose_name='дата оплаты')
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, verbose_name='публикация')
-
-
-
-

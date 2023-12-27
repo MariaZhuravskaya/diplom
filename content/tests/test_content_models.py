@@ -68,5 +68,3 @@ class PublicationModelTest(TestCase):
         publication = Publication.objects.get(id=1)
         max_digits = publication._meta.get_field('price').max_digits
         self.assertEquals(max_digits, 10)
-
-

@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     'content',
     'users',
@@ -89,11 +90,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('HOST'),
-        'PORT': 5432
+        'NAME':  os.getenv('POSTGRES_DB', 'content'),
+        'USER':  os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD':  os.getenv('POSTGRES_PASSWORD', 'maria'),
+        'HOST':  os.getenv('POSTGRES_HOST', '127.0.0.1'),
+        'PORT':  os.getenv('POSTGRES_PORT', 5432),
     }
 }
 

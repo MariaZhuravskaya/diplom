@@ -18,5 +18,3 @@ class SubscriptionFormTest:
         form.is_valid()
         form.save()
         assert Subscription.objects.filter(publication=publication).count == 1
-
-

@@ -1,10 +1,7 @@
 from http import HTTPStatus
-
 from django.test import TestCase
 from django.urls import reverse
-
 from content.models import Publication
-from users.models import User
 
 
 class PublicationListViewTest(TestCase):

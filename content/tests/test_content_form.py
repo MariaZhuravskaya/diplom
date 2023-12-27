@@ -21,5 +21,3 @@ class PublicationFormTest:
         form.is_valid()
         form.save()
         assert Publication.objects.filter(name=name).count == 1
-
-

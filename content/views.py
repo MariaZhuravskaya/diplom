@@ -103,7 +103,8 @@ class PublicationDetailView(DetailView):
                     and not self.request.user.is_staff
                     and self.object.id not in subscriptions
                     and self.object.price > 0):
-                return HttpResponseRedirect(reverse_lazy('payments:create-checkout-session', kwargs={'pk': self.object.id}))
+                return HttpResponseRedirect(reverse_lazy('payments:create-checkout-session',
+                                                         kwargs={'pk': self.object.id}))
         return super().get(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
