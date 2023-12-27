@@ -23,6 +23,7 @@
 
 Тестовые данные из БД залиты в файл data.json
 Заполнить данные можно с помощью комманды: **python -Xutf8 manage.py loadpdata data.json**
+В файле `password_test_user.txt` приведены тестовые данные.
 
 
 
